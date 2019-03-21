@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t mustafaunal/react-test -f ./client/Dockerfile.dev .
+  - docker build -t mustafaunal/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run mustafaunal/react-test npm test -- --coverage
