@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "mustafaunal/multi-client",
+            "hostname": "client", 
+            "essential": false 
+        },
+        {
+            "name": "server",
+            "image": "mustafaunal/multi-server",
+            "hostname": "api", 
+            "essential": false 
+        },
+        {
+            "name": "worker",
+            "image": "mustafaunal/multi-worker",
+            "hostname": "worker", 
+            "essential": false 
+        },
+        {
+            "name": "nginx",
+            "image": "mustafaunal/multi-nginx",
+            "hostname": "nginx", 
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
+        }
+    ]
+}
